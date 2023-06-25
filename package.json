@@ -10,12 +10,12 @@
     "start": "cd dist && NODE_PATH=./dist node index.js",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "cd front_end && vite preview",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "deploy": "npm run clean && rimraf node_modules && npm i && npm run build && rimraf node_modules && npm i --production --omit=dev"
   },
   "author": "AlicornLunaa",
   "license": "ISC",
   "dependencies": {
-    "mc-schematic": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
