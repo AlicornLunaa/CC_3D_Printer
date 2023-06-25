@@ -1,11 +1,12 @@
+import nbt from "prismarine-nbt";
+import WorldeditSchem from "./types/WorldeditSchem";
 import fs from "fs";
 
-/**
- * TODO: Convert to using NBT reader instead
- */
+async function init(){
+    let data = fs.readFileSync("./assets/test_schem.schem");
+    let parsed: WorldeditSchem = nbt.simplify((await nbt.parse(data, "big")).parsed);
 
-fs.readFile("./assets/test_schem.schem", (err, data) => {
-    // Schematic.parse(data, (err: any, schem: any) => {
-    //     console.log(schem.getBlock(0, 0, 0));
-    // });
-});
+    console.log(parsed);
+}
+
+init();
