@@ -16,7 +16,9 @@
   "author": "AlicornLunaa",
   "license": "ISC",
   "dependencies": {
+    "prismarine-block": "^1.16.3",
     "prismarine-nbt": "^2.2.1",
+    "prismarine-registry": "^1.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
