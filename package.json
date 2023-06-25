@@ -1,0 +1,38 @@
+{
+  "name": "cc_3d_printer",
+  "version": "1.0.0",
+  "description": "3D printing script using worldedit schematics",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev-frontend": "cd front_end && vite",
+    "dev-backend": "cd back_end && nodemon src/index.ts",
+    "build": "(npm run clean) && (cd front_end && tsc && vite build); (cd back_end && tsc -p .); (cp -r ./computer ./dist/computer); (cp -r ./back_end/assets ./dist/assets);",
+    "start": "cd dist && NODE_PATH=./dist node index.js",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "cd front_end && vite preview",
+    "clean": "rimraf dist"
+  },
+  "author": "AlicornLunaa",
+  "license": "ISC",
+  "dependencies": {
+    "mc-schematic": "^2.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "nodemon": "^2.0.22",
+    "rimraf": "^5.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9"
+  }
+}
