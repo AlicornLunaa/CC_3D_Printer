@@ -43,6 +43,12 @@ class TurtleManager {
     public getTurtle(index: number): Turtle {
         return this.turtles[index];
     }
+
+    public forEach(callback: (index: number, turtle: Turtle) => void){
+        for(let i = 0; i < this.getTurtleCount(); i++){
+            callback(i, this.getTurtle(i));
+        }
+    }
 }
 
 export default TurtleManager;
