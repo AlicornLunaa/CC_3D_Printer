@@ -20,6 +20,10 @@ expressServer.get("/turtle/:id/:command", async (req, res) => {
     let command = req.params.command;
     let turtle = turtleManager.getTurtle(id);
 
+    if(turtle === undefined){
+        return;
+    }
+
     let evaluateBool = (v: boolean) => {
         if(v)
             return "true";
