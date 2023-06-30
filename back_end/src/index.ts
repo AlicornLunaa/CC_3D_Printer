@@ -78,13 +78,12 @@ expressServer.get("/build/start/:name", async (req, res) => {
         let schem = await Schematic.parse(data);
         buildManager = new BuildManager(turtleManager, schem);
         buildManager.start();
+        res.end(JSON.stringify(schem));
     } catch(err){
         console.error(err);
         res.end("false");
         return;
     }
-
-    res.end("true");
 });
 
 expressServer.get("/build/stop", async (req, res) => {

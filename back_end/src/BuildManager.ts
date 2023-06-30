@@ -20,7 +20,7 @@ class BuildManager {
 
         this.timer = setInterval(() => {
             this.step();
-        }, 1000);
+        }, 100);
     }
 
     async stop(){
