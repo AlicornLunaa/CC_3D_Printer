@@ -37,14 +37,16 @@ function App() {
           <Grid item xs={4}><Button variant="contained" fullWidth onClick={() => { send(0, "turnLeft"); }}>Left</Button></Grid>
           <Grid item xs={4}><Button variant="contained" fullWidth onClick={() => { send(0, "back"); }}>Back</Button></Grid>
           <Grid item xs={4}><Button variant="contained" fullWidth onClick={() => { send(0, "turnRight"); }}>Right</Button></Grid>
-          <Grid item xs={6}><Button variant="contained" fullWidth onClick={() => {
-            send(0, "inspect")
+          <Grid item xs={12}><Button variant="contained" fullWidth onClick={() => {
+            send(0, "scanChests")
               .then(res => res.json()
-                .then(value => console.log(value.name)));
-          }}>Inspect</Button></Grid>
-          <Grid item xs={6}><Button variant="contained" fullWidth onClick={() => { send(0, "craft"); }}>Craft</Button></Grid>
-          <Grid item xs={6}><Button variant="contained" fullWidth onClick={() => { send(0, "dig"); }}>Dig</Button></Grid>
-          <Grid item xs={6}><Button variant="contained" fullWidth onClick={() => { send(0, "place"); }}>Place</Button></Grid>
+                .then(value => console.log(value)));
+          }}>Scan Chests</Button></Grid>
+          <Grid item xs={12}><Button variant="contained" fullWidth onClick={() => {
+            send(0, "testSchem")
+              .then(res => res.json()
+                .then(value => console.log(value)));
+          }}>Test Schematic</Button></Grid>
         </Grid>
         {started ? stopBtn : startBtn}
       </Container>
@@ -53,4 +55,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

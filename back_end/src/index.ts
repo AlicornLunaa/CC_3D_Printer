@@ -54,20 +54,12 @@ expressServer.get("/turtle/:id/:command", async (req, res) => {
             res.end(JSON.stringify(await turtle.turnRight()));
             return;
 
-        case "inspect":
-            res.end(JSON.stringify(await turtle.inspect()));
+        case "scanChests":
+            res.end(JSON.stringify(await turtle.scanChests()));
             return;
 
-        case "craft":
-            res.end(JSON.stringify(await turtle.craft()));
-            return;
-
-        case "dig":
-            res.end(JSON.stringify(await turtle.dig()));
-            return;
-
-        case "place":
-            res.end(JSON.stringify(await turtle.place()));
+        case "testSchem":
+            res.end(JSON.stringify(await turtle.testSchem()));
             return;
 
         default:

@@ -105,6 +105,10 @@ class Turtle {
         return this.send<ItemDetails|false>((slot !== undefined) ? `turtle.getItemDetail ${slot} ${detailed}` : `turtle.getItemDetail`);
     }
 
+    public async sleep(ms: number){
+        return this.send<void>(`turtle.sleep ${ms / 1000}`);
+    }
+
 }
 
 export default Turtle;

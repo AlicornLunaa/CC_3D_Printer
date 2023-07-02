@@ -1,11 +1,12 @@
 import { WebSocketServer } from "ws";
 import { Server } from "http";
-import Turtle from "./Turtle";
+import Turtle from "./remote/Turtle";
+import BuilderTurtle from "./BuilderTurtle";
 
 class TurtleManager {
     // Variables
     private socketServer: WebSocketServer;
-    private turtles: Turtle[];
+    private turtles: BuilderTurtle[];
 
     // Functions
     constructor(server: Server){
@@ -32,7 +33,7 @@ class TurtleManager {
         
             // Initializer
             console.log("Found client");
-            this.turtles.push(new Turtle(socket));
+            this.turtles.push(new BuilderTurtle(socket));
         });
     }
 
@@ -40,11 +41,11 @@ class TurtleManager {
         return this.turtles.length;
     }
 
-    public getTurtle(index: number): Turtle {
+    public getTurtle(index: number): BuilderTurtle {
         return this.turtles[index];
     }
 
-    public forEach(callback: (index: number, turtle: Turtle) => void){
+    public forEach(callback: (index: number, turtle: BuilderTurtle) => void){
         for(let i = 0; i < this.getTurtleCount(); i++){
             callback(i, this.getTurtle(i));
         }
