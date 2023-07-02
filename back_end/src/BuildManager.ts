@@ -31,7 +31,7 @@ class BuildManager {
     async step(){
         // Progress every turtle by one instruction
         this.manager.forEach((i, turtle) => {
-            turtle.forward();
+            // turtle.forward();
         });
     }
 };

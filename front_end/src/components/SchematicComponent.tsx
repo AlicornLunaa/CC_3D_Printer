@@ -1,4 +1,5 @@
 import { Block } from "prismarine-block";
+import Localization from "../assets/en_us.json";
 import "./SchematicComponent.css";
 
 interface ISchematic {
@@ -23,13 +24,31 @@ interface ScheamticProps {
     schematic: ISchematic;
 }
 
+interface ILocalization {
+    [key: string]: string;
+}
+
 function SchematicComponent({ schematic }: ScheamticProps){
+    const getBlockName = (id: string) => {
+        let index1 = id.indexOf(":");
+        let index2 = id.indexOf("[");
+
+        let provider = id.substring(0, index1);
+        let block = id.substring(index1 + 1, (index2 == -1) ? undefined : index2);
+        let name: string|undefined = (Localization as ILocalization)[`block.${provider}.${block}`];
+
+        if(name === undefined)
+            return block;
+
+        return name;
+    };
+
     const getItems = (palette: { [key: string]: number }) => {
         let keys: JSX.Element[] = [];
         let id = 0;
 
         for(let k in palette){
-            keys.push(<li key={id}>{palette[k]} of {k}</li>)
+            keys.push(<li key={id}>0/{palette[k]} {getBlockName(k)}</li>)
             id++;
         }
 

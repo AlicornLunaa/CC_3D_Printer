@@ -29,36 +29,45 @@ expressServer.get("/turtle/:id/:command", async (req, res) => {
         return;
     }
 
-    let evaluateBool = (v: boolean) => {
-        if(v)
-            return "true";
-
-        return "false";
-    }
-
     switch(command){
         case "forward":
-            res.end(evaluateBool(await turtle.forward()));
+            res.end(JSON.stringify(await turtle.forward()));
             return;
 
         case "back":
-            res.end(evaluateBool(await turtle.back()));
+            res.end(JSON.stringify(await turtle.back()));
             return;
 
         case "up":
-            res.end(evaluateBool(await turtle.up()));
+            res.end(JSON.stringify(await turtle.up()));
             return;
 
         case "down":
-            res.end(evaluateBool(await turtle.down()));
+            res.end(JSON.stringify(await turtle.down()));
             return;
 
         case "turnLeft":
-            res.end(evaluateBool(await turtle.turnLeft()));
+            res.end(JSON.stringify(await turtle.turnLeft()));
             return;
 
         case "turnRight":
-            res.end(evaluateBool(await turtle.turnRight()));
+            res.end(JSON.stringify(await turtle.turnRight()));
+            return;
+
+        case "inspect":
+            res.end(JSON.stringify(await turtle.inspect()));
+            return;
+
+        case "craft":
+            res.end(JSON.stringify(await turtle.craft()));
+            return;
+
+        case "dig":
+            res.end(JSON.stringify(await turtle.dig()));
+            return;
+
+        case "place":
+            res.end(JSON.stringify(await turtle.place()));
             return;
 
         default:

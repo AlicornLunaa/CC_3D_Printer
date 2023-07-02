@@ -37,6 +37,14 @@ function App() {
           <Grid item xs={4}><Button variant="contained" fullWidth onClick={() => { send(0, "turnLeft"); }}>Left</Button></Grid>
           <Grid item xs={4}><Button variant="contained" fullWidth onClick={() => { send(0, "back"); }}>Back</Button></Grid>
           <Grid item xs={4}><Button variant="contained" fullWidth onClick={() => { send(0, "turnRight"); }}>Right</Button></Grid>
+          <Grid item xs={6}><Button variant="contained" fullWidth onClick={() => {
+            send(0, "inspect")
+              .then(res => res.json()
+                .then(value => console.log(value.name)));
+          }}>Inspect</Button></Grid>
+          <Grid item xs={6}><Button variant="contained" fullWidth onClick={() => { send(0, "craft"); }}>Craft</Button></Grid>
+          <Grid item xs={6}><Button variant="contained" fullWidth onClick={() => { send(0, "dig"); }}>Dig</Button></Grid>
+          <Grid item xs={6}><Button variant="contained" fullWidth onClick={() => { send(0, "place"); }}>Place</Button></Grid>
         </Grid>
         {started ? stopBtn : startBtn}
       </Container>
