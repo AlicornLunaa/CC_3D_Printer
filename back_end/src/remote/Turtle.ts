@@ -1,5 +1,8 @@
 import { WebSocket } from "ws";
 
+type Side = "top"|"bottom"|"right"|"left"|"front"|"back";
+type InventoryCommands = "size"|"list"|"getItemDetail"|"getItemLimit"|"pushItems"|"pullItems";
+
 type BlockData = {
     name: string;
     state: any;
@@ -109,6 +112,29 @@ class Turtle {
         return this.send<void>(`turtle.sleep ${ms / 1000}`);
     }
 
+    public async callInventory(side: Side, cmd: InventoryCommands, ...args: any){
+        switch(cmd){
+            case "size":
+                return this.send<number>(`peripheral.call ${side} ${cmd}`);
+
+            case "list":
+                return this.send<ItemDetails[]>(`peripheral.call ${side} ${cmd}`);
+
+            case "getItemDetail":
+                return this.send<ItemDetails>(`peripheral.call ${side} ${cmd} ${args[0]}`);
+
+            case "getItemLimit":
+                return this.send<number>(`peripheral.call ${side} ${cmd} ${args[0]}`);
+
+            case "pushItems":
+                return this.send<number>(`peripheral.call ${side} ${cmd} ${args[0]} ${args[1]} ${args[2]} ${args[3]}`);
+
+            case "pullItems":
+                return this.send<number>(`peripheral.call ${side} ${cmd} ${args[0]} ${args[1]} ${args[2]} ${args[3]}`);
+        }
+    }
+
 }
 
-export default Turtle;
+export type { ItemDetails, BlockData };
+export { Turtle };

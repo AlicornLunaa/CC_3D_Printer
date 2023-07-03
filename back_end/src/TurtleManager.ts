@@ -1,6 +1,6 @@
 import { WebSocketServer } from "ws";
 import { Server } from "http";
-import Turtle from "./remote/Turtle";
+import { Turtle } from "./remote/Turtle";
 import BuilderTurtle from "./BuilderTurtle";
 
 class TurtleManager {
